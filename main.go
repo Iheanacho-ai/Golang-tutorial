@@ -4,38 +4,40 @@ package main
 
 import (
 	"fmt"
-	"strings"
-	"sort"
 )
 
 func main() {
-	greeting := "hello there friends!"
+	// for loops
+	x := 0
 
-	fmt.Println(strings.Contains(greeting, "hello")) // searches if hello is in the greeting variable
+	//1
+	for x < 5 {
+		fmt.Println("vaue of x is:", x )
+		x++
+	} 
 
-	fmt.Println(strings.ReplaceAll(greeting, "hello", "hi")) // replaces hello with hi in the greetings variables
+	//2
 
-	fmt.Println("original string value =", greeting) // shows that replace does not alter the original string
+	for i := 0; i < 5; i++ {
+		fmt.Println("the value of i:", i)
+	}
 
-	fmt.Println(strings.ToUpper(greeting)) // to uppercase
+	names := []string{"mario", "luigi", "yoshi", "peach"}
 
-	fmt.Println(strings.Index(greeting, "ll")) // shows the position of "ll" in the greetings string
+	//3
+	for i := 0; i < len(names); i++ {
+		fmt.Println(names[i])
+	}
 
-	fmt.Println(strings.Split(greeting, " "))
+	// for in loop
 
-	ages := []int{45, 20, 35, 30, 75, 60, 50, 25}
+	for index, value := range names{
+		fmt.Printf("the value at index %v is %v \n", index, value)
+	}
 
-	sort.Ints(ages) // sorts the slice(flexible array), according to the largest number
-	fmt.Println(ages) // alters the actualslice
+	//for in loop without either index or value
 
-
-	index := sort.SearchInts(ages, 30) // finds the number in the slice
-	fmt.Println(index)
-
-	names := []string{"yoshi", "mario", "peach", "bowser", "luigi"}
-
-	sort.Strings(names) // sorts the strings in alphabetical order
-	fmt.Println(names)
-
-	fmt.Println(sort.SearchStrings(names, "bowser"))
+	for _, value := range names{
+		fmt.Printf("the values are: %v \n", value)
+	}
 }
