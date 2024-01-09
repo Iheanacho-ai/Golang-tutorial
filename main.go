@@ -3,29 +3,35 @@ package main
 import "fmt"
 
 func main() {
-	age:= 35
-	name:= "amarachi"
+	//arrays
+	//var ages [3]int =  [3]int{20, 25, 30}
+	//shorthand of array
+	var ages = [3]int{20, 25, 35}
 
-	//print
-	fmt.Print("hello,")
-	fmt.Print("world! \n") //new line
-	fmt.Print("new line \n")
+	//an even shorterhand
+	names:= [4]string{"yoshi", "mario", "peach", "bowser"}
+	names[1] = "luigi" // changes the string in position 1 to luigi
 
-	//Println
-	fmt.Println("hello world")
-	fmt.Println("goodbye world")
+	fmt.Println(ages, len(ages)) //prints out the ages array,a nd its length
+	fmt.Println(names, len(names))
 
-	fmt.Println("my name is", name, "and i am", age)
+	//slices (use arrays under the hoood, but its flexible)
+	var scores = []int{100, 50, 60}
+	scores[2] = 25
+	scores = append(scores, 85)// add an item to the scores array
+	fmt.Println(scores, len(scores))
 
-	//Printf(formatted strings)
-	fmt.Printf("my age is %v and my name is %v", age, name)
-	fmt.Printf("my age is %q and my name is %q", age, name) // puts quotation over the printed out string
-	fmt.Printf("age is of type %T \n", age)// prints out the type of the age variable
-	fmt.Printf("you scored %f points! \n", 225.55) //prints out the text with the float number
-	fmt.Printf("you scored %0.1f points! \n", 225.55) // prints out the text with the float number but rounds it up to one decimal points
+	//slices ranges
+	rangeOne := names[1:3] //prints out the item in postion 1 of the array names, to position 3, does not include 3 though
+	rangeTwo := names[2:] // from position two to the end
+	rangeThree := names [:3] // from position 0 to position 3 but not including 3
+	fmt.Println(rangeOne) 
+	fmt.Println(rangeTwo)
+	fmt.Println(rangeThree)
 
-	//Sprintf( save formatted string)
-	var str = fmt.Sprintf("my age is %v and my name is %v", age, name)
-	fmt.Println("the saved string is:", str)
+	rangeOne = append(rangeOne, "koopa")
+	fmt.Println(rangeOne)
+
+
 
 }
