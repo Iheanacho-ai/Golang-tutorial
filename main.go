@@ -1,37 +1,41 @@
+// https://pkg.go.dev/std - standard library
+
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+	"sort"
+)
 
 func main() {
-	//arrays
-	//var ages [3]int =  [3]int{20, 25, 30}
-	//shorthand of array
-	var ages = [3]int{20, 25, 35}
+	greeting := "hello there friends!"
 
-	//an even shorterhand
-	names:= [4]string{"yoshi", "mario", "peach", "bowser"}
-	names[1] = "luigi" // changes the string in position 1 to luigi
+	fmt.Println(strings.Contains(greeting, "hello")) // searches if hello is in the greeting variable
 
-	fmt.Println(ages, len(ages)) //prints out the ages array,a nd its length
-	fmt.Println(names, len(names))
+	fmt.Println(strings.ReplaceAll(greeting, "hello", "hi")) // replaces hello with hi in the greetings variables
 
-	//slices (use arrays under the hoood, but its flexible)
-	var scores = []int{100, 50, 60}
-	scores[2] = 25
-	scores = append(scores, 85)// add an item to the scores array
-	fmt.Println(scores, len(scores))
+	fmt.Println("original string value =", greeting) // shows that replace does not alter the original string
 
-	//slices ranges
-	rangeOne := names[1:3] //prints out the item in postion 1 of the array names, to position 3, does not include 3 though
-	rangeTwo := names[2:] // from position two to the end
-	rangeThree := names [:3] // from position 0 to position 3 but not including 3
-	fmt.Println(rangeOne) 
-	fmt.Println(rangeTwo)
-	fmt.Println(rangeThree)
+	fmt.Println(strings.ToUpper(greeting)) // to uppercase
 
-	rangeOne = append(rangeOne, "koopa")
-	fmt.Println(rangeOne)
+	fmt.Println(strings.Index(greeting, "ll")) // shows the position of "ll" in the greetings string
+
+	fmt.Println(strings.Split(greeting, " "))
+
+	ages := []int{45, 20, 35, 30, 75, 60, 50, 25}
+
+	sort.Ints(ages) // sorts the slice(flexible array), according to the largest number
+	fmt.Println(ages) // alters the actualslice
 
 
+	index := sort.SearchInts(ages, 30) // finds the number in the slice
+	fmt.Println(index)
 
+	names := []string{"yoshi", "mario", "peach", "bowser", "luigi"}
+
+	sort.Strings(names) // sorts the strings in alphabetical order
+	fmt.Println(names)
+
+	fmt.Println(sort.SearchStrings(names, "bowser"))
 }
