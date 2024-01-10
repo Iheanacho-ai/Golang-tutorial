@@ -3,38 +3,34 @@ package main
 
 import (
 	"fmt"
-	"math"
+	"strings"
 )
 
-func sayGreeting(n string){
-	fmt.Printf("Good morning %v \n", n)
-}
+func getInitials (n string) (string, string){
+	s := strings.ToUpper(n) // TIFA LOCKHART
+	names := strings.Split(s, "") // [TIFA, LOCKHART]
 
-func sayBye(n string){
-	fmt.Printf("Say Bye %v \n", n)
-}
-
-func cycleNames(n []string, f func(string)){
-	for _, v := range n {
-		f(v)
+	var initials []string // {}
+	for _, v := range names {
+		initials = append(initials, v[:1]) // appends the items in postion 0 of the array value currently worked on in the loop, through to position 1, does not include 1 though, to the initials array
 	}
+
+	if len(initials) > 1 {
+		return initials[0], initials[1]
+	} 
+	
+	return initials[0], "_"
 }
 
-func circleArea(r float64) float64 {
-	return math.Pi * r * r 
-}
 
 func main() {
-	sayGreeting("amarachi")
-	sayBye("amarachi")
+	fn1, sn1 := getInitials("tifa lockhart")
+	fmt.Println(fn1, sn1)
 
-	cycleNames([]string{"cloud", "tifa", "barret"}, sayGreeting)
-	cycleNames([]string{"cloud", "tifa", "barret"}, sayBye)
+	fn2, sn2 := getInitials("cloud strife")
+	fmt.Println(fn2, sn2)
 
-	a1 := circleArea(10.5)
-	a2 := circleArea(15)
-
-	fmt.Println(a1, a2)
-	fmt.Printf("circle 1 is %0.3f and circle 2 is %0.3f", a1, a2)
+	fn3, sn3 := getInitials("barret")
+	fmt.Println(fn3, sn3)
 }
 
