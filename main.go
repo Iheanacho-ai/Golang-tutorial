@@ -1,4 +1,3 @@
-// https://pkg.go.dev/std - standard library
 
 package main
 
@@ -7,37 +6,35 @@ import (
 )
 
 func main() {
-	// for loops
-	x := 0
+	age := 45
 
-	//1
-	for x < 5 {
-		fmt.Println("vaue of x is:", x )
-		x++
-	} 
+	fmt.Println(age <= 50)
+	fmt.Println(age >= 50)
+	fmt.Println(age == 45)
+	fmt.Println(age != 50)
 
-	//2
-
-	for i := 0; i < 5; i++ {
-		fmt.Println("the value of i:", i)
+	// if else
+	if age < 30 {
+		fmt.Println("age is less than 30")
+	} else if age  < 40 {
+		fmt.Println("age is less than 40")
+	} else {
+		fmt.Println("age is not less than 45")
 	}
 
-	names := []string{"mario", "luigi", "yoshi", "peach"}
+	names := []string{"mario", "luigi", "yoshi", "peach", "bowser"}
 
-	//3
-	for i := 0; i < len(names); i++ {
-		fmt.Println(names[i])
-	}
+	for index, value := range names {
+		if index == 1 {
+			fmt.Println("continuing at pos", index)
+			continue // means break out of this iteration and continue with the loop
+		} 
+		
+		if index > 2 {
+			fmt.Println("breaking at pos", index)
+			break // breaks out of the loop completely
+		}
 
-	// for in loop
-
-	for index, value := range names{
-		fmt.Printf("the value at index %v is %v \n", index, value)
-	}
-
-	//for in loop without either index or value
-
-	for _, value := range names{
-		fmt.Printf("the values are: %v \n", value)
+		fmt.Printf("the value at pos %v is %v \n", index, value)
 	}
 }
