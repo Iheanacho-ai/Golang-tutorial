@@ -3,38 +3,38 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
-func main() {
-	age := 45
+func sayGreeting(n string){
+	fmt.Printf("Good morning %v \n", n)
+}
 
-	fmt.Println(age <= 50)
-	fmt.Println(age >= 50)
-	fmt.Println(age == 45)
-	fmt.Println(age != 50)
+func sayBye(n string){
+	fmt.Printf("Say Bye %v \n", n)
+}
 
-	// if else
-	if age < 30 {
-		fmt.Println("age is less than 30")
-	} else if age  < 40 {
-		fmt.Println("age is less than 40")
-	} else {
-		fmt.Println("age is not less than 45")
-	}
-
-	names := []string{"mario", "luigi", "yoshi", "peach", "bowser"}
-
-	for index, value := range names {
-		if index == 1 {
-			fmt.Println("continuing at pos", index)
-			continue // means break out of this iteration and continue with the loop
-		} 
-		
-		if index > 2 {
-			fmt.Println("breaking at pos", index)
-			break // breaks out of the loop completely
-		}
-
-		fmt.Printf("the value at pos %v is %v \n", index, value)
+func cycleNames(n []string, f func(string)){
+	for _, v := range n {
+		f(v)
 	}
 }
+
+func circleArea(r float64) float64 {
+	return math.Pi * r * r 
+}
+
+func main() {
+	sayGreeting("amarachi")
+	sayBye("amarachi")
+
+	cycleNames([]string{"cloud", "tifa", "barret"}, sayGreeting)
+	cycleNames([]string{"cloud", "tifa", "barret"}, sayBye)
+
+	a1 := circleArea(10.5)
+	a2 := circleArea(15)
+
+	fmt.Println(a1, a2)
+	fmt.Printf("circle 1 is %0.3f and circle 2 is %0.3f", a1, a2)
+}
+
