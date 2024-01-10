@@ -5,34 +5,25 @@ import (
 	"fmt"
 )
 
-func updateName(x string) string {
-	x = "wedge"
-	return x
+func updateName(x *string){ // we dereference the pointer passed as ana rgument
+	*x = "wedge" // we change the derefernced variable to a different string
 }
 
-func updateMenu(y map[string]float64) {
-	y["coffee"] = 2.99
-}
 
 func main() {
-	// group A types -> strings, ints, bools, floats, arrays -> non-pointer values
-
 	name := "tifa"
-	name = updateName(name)
+	// updateName(name)
+
+	//fmt.Println("memory address of name is:", &name)
+
+	m := &name // stores the pointer we created by using '&', and the variable name
+	fmt.Println("memory address is:", &name)
+	fmt.Println("value at memory address:", *m) // *m finds the variable using the pointer &name, basically dereferences the pointer
+
 	fmt.Println(name)
+	updateName(m)
 
-	// group B -> slices, maps, functions -> pointer wrapper values
-	menu := map[string]float64{
-		"pie": 5.95,
-		"ice cream": 3.99,
-	}
-
-	updateMenu(menu)
-	fmt.Println(menu)
-
-
-
-
+	fmt.Println(name)
 
 }
 
