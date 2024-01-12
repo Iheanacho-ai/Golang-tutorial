@@ -8,7 +8,7 @@ type bill struct {
 	tip   float64
 }
 
-// make new bills
+// make new bills using the bill struct type
 func newBill(name string) bill {
 	b := bill{
 		name:  name,
@@ -22,7 +22,7 @@ func newBill(name string) bill {
 // format the bill
 func (b *bill) format() string { // receiver functions, the parenthesis before the function name, makes this function only accessible from a bill object
 	fs := "Bill breakdown: \n"
-	var total float64 = 0
+	var total float64 = 0 // the total variable
 
 	// list items
 	for k, v := range b.items { // we are mapping through the bill object we are taking
